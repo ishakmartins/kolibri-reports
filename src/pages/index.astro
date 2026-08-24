@@ -1,9 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
-import reports from '../data/reports.json';
+import packets from '../data/packets.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-// reports.json is already sorted by date, most recent first (scripts/cms.py)
+// packets.json is already sorted by Date published, most recent first, with
+// isFirstOfDate/dateRowSpan precomputed for the grouped date cell (scripts/cms.py) --
+// keep that grouping logic in one place rather than recomputing it here from a flat array.
 ---
 <Base title="Kolibri reports">
   <h1>Kolibri reports</h1>
@@ -15,27 +17,43 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     requests, please send email to <a href="mailto:feedback-kolibri@lokanetra.dev">feedback-kolibri@lokanetra.dev</a>.
   </p>
 
+  <p class="callout">
+    Kolibri is best paired with
+    <a href="https://open.lokanetra.dev/kestrel-trending/">Kestrel-Trending</a>.
+  </p>
+
   <div class="wrap">
   <table>
     <thead>
       <tr>
-        <th>UUID</th><th>Title</th><th>Date published</th>
-        <th>Report Page</th><th>DOI (Zenodo)</th><th>Kolibri version</th>
+        <th>Date published</th><th>Keywords</th><th>Date start</th><th>Date end</th>
+        <th>Analysis</th><th>Volume (collected)</th><th>Total estimated engagement</th>
       </tr>
     </thead>
     <tbody>
-      {reports.map((r) => (
+      {packets.map((p) => (
         <tr>
-          <td class="uuid">{r.uuid}</td>
-          <td class="title">{r.title}</td>
-          <td class="date">{r.date}</td>
-          <td><a href={`${base}/${r.reportLink}/`}>Open report</a></td>
-          <td><a href={`https://doi.org/${r.doi}`}>{r.doi}</a></td>
-          <td class="ver">{r.version}</td>
+          {p.isFirstOfDate && <td class="date" rowspan={p.dateRowSpan}>{p.published}</td>}
+          <td>{p.keywords}</td>
+          <td class="date">{p.dateStart}</td>
+          <td class="date">{p.dateEnd}</td>
+          <td>{p.analysis
+            ? <a href={`${base}/${p.analysis}/`}>Open report</a>
+            : 'REPORT NOT AVAILABLE'}</td>
+          <td class="num">{p.volume.toLocaleString()}</td>
+          <td class="num">{p.totalEngagement.toLocaleString()}</td>
         </tr>
       ))}
     </tbody>
   </table>
-  {reports.length === 0 && <p class="empty">No reports published yet.</p>}
+  {packets.length === 0 && <p class="empty">No packets published yet.</p>}
   </div>
 </Base>
+
+<style>
+  .callout{border:1px solid var(--bd);border-left:3px solid var(--acc);border-radius:2px;
+    padding:.9rem 1.2rem;margin:0 0 3rem;max-width:62ch;color:var(--fg2)}
+  .callout a{color:var(--fg)}
+  .callout a:hover{color:var(--acc)}
+  td.num{text-align:right}
+</style>

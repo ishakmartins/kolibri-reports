@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gibran &amp; NTT — Kolibri report</title>
+<style>:root{--bg:#121212;--bg2:#1c1c1c;--fg:#e0e0e0;--fg2:#aaa;--bd:#333;--acc:#ff8c42}
+@media(prefers-color-scheme:light){:root{--bg:#fff;--bg2:#f5f5f5;--fg:#111;--fg2:#555;--bd:#ccc;--acc:#d4520a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Alte Haas Grotesk','Helvetica Neue',Arial,sans-serif;
+  font-size:16px;line-height:1.55}
+main{max-width:1000px;margin:0 auto;padding:2rem}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;letter-spacing:-.02em;margin:0 0 1rem}
+h2{font-size:1.15rem;color:var(--fg2);border-bottom:1px solid var(--bd);padding-bottom:.4rem;margin:2.4rem 0 1rem}
+h3{font-size:1rem;margin:1.4rem 0 .4rem}
+a{color:var(--acc)}
+ul.kw{list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-wrap:wrap;gap:.4rem}
+ul.kw li{background:var(--bg2);border:1px solid var(--bd);border-radius:2px;padding:.25rem .6rem;font-size:.85rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.stats div{background:var(--bg2);border:1px solid var(--bd);border-radius:4px;padding:1rem}
+.stats span{display:block;color:var(--fg2);font-size:.78rem;margin-bottom:.3rem}
+.stats strong{font-size:1.3rem}
+iframe{width:100%;height:520px;border:1px solid var(--bd);background:var(--bg2)}
+img{max-width:100%;border:1px solid var(--bd);border-radius:4px}
+.na{color:var(--fg2);font-style:italic}
+.net-static{margin-top:.5rem;font-size:.85rem;color:var(--fg2)}
+
+/* interactive network widget (pipeline/report_assets/network.js) */
+.kn-wrap button,.kn-wrap select,.kn-wrap input{font:inherit;font-size:.82rem;color:var(--fg);
+  background:var(--bg2);border:1px solid var(--bd);border-radius:2px;padding:.3rem .6rem}
+.kn-wrap button:hover{border-color:var(--acc);color:var(--acc);cursor:pointer}
+.kn-wrap button[aria-pressed=true]{border-color:var(--acc);color:var(--acc)}
+.kn-bar{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:.6rem}
+.kn-sp{flex:1}
+.kn-note{color:var(--fg2);font-size:.78rem}
+.kn-chk{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;color:var(--fg2);cursor:pointer}
+.kn-chk i{display:inline-block;width:8px;height:8px;border-radius:50%}
+.kn-netwrap{position:relative;display:flex;gap:.8rem;align-items:stretch;flex-wrap:wrap}
+.kn-canvas{flex:1 1 560px;min-width:280px;height:560px;background:var(--bg2);
+  border:1px solid var(--bd);border-radius:4px;cursor:crosshair;touch-action:none}
+.kn-side{width:clamp(260px,26vw,400px);flex:0 0 auto;max-height:560px;overflow-y:auto}
+.kn-panel{border:1px solid var(--bd);border-radius:4px;background:var(--bg2);padding:.8rem .9rem;margin-bottom:.6rem}
+.kn-scroll{max-height:220px;overflow-y:auto;border:1px solid var(--bd);border-radius:4px;margin-bottom:.6rem}
+.kn-tbl{border-collapse:collapse;width:100%;font-size:.78rem}
+.kn-tbl td{border-bottom:1px solid var(--bd);padding:.35rem .6rem;white-space:nowrap;cursor:pointer}
+.kn-tbl tbody tr:hover{background:var(--bg)}
+.kn-empty{color:var(--fg2);font-size:.8rem}
+.kn-legend{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.5rem;font-size:.75rem;color:var(--fg2)}
+.kn-legend i{display:inline-block;width:8px;height:8px;margin-right:.3rem;border-radius:50%}
+.kn-tweet{border:1px solid var(--bd);border-radius:4px;background:var(--bg);padding:.7rem .8rem;margin-bottom:.5rem}
+.kn-h{display:flex;gap:.5rem;align-items:baseline;margin-bottom:.3rem}
+.kn-u{color:var(--fg);font-weight:600;font-size:.85rem}
+.kn-t{color:var(--fg2);font-size:.72rem}
+.kn-tweet p{margin:0 0 .5rem;font-size:.85rem;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.kn-s{display:flex;gap:.8rem;color:var(--fg2);font-size:.72rem;flex-wrap:wrap}
+.kn-s b{color:var(--fg)}
+.kn-go{display:inline-block;margin-top:.4rem;font-size:.75rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Gibran &amp; NTT</h1>
+<ul class="kw"><li>Gibran Peduli NTT</li><li>#PRAYFORNTT</li><li>wapres gibran</li><li>#bantuanNTT</li><li>#GempaNTT</li></ul>
+<div class="stats">
+  <div><span>Unique users</span><strong>8,511</strong></div>
+  <div><span>Tweets</span><strong>28,253</strong></div>
+  <div><span>Total engagement</span><strong>4,160,126</strong></div>
+  <div><span>Avg engagement (mean)</span><strong>147.2</strong></div>
+  <div><span>Avg engagement (median)</span><strong>13.0</strong></div>
+</div>
+<h2>Volume</h2>
+<iframe src="histogram.html" title="Tweet volume per hour"></iframe>
+<h2>Engagement network</h2>
+<div id="kolibri-network"></div>
+<script src="network_data.js"></script>
+<script src="assets/network.js"></script>
+<p class="net-static"><a href="network_map.png">Static image</a></p>
+<h2>Emotion</h2>
+<p class="na">REPORT NOT AVAILABLE</p>
+<h2>Summary pointers</h2>
+<p class="na">REPORT NOT AVAILABLE</p>
+</main>
+</body>
+</html>

@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-08-24 — packets schema
+
+Ported the grouped-packets CMS from `kolibri/site/` (a throwaway preview inside the
+`kolibri` repo) into this production site, replacing the initial-scaffold UUID/Title/
+DOI schema entirely.
+
+- `cms/reports.xlsx` → `cms/packets.xlsx` (sheet `packets`), columns `Date published |
+  Keywords | Date start | Date end | Analysis | Volume (collected) | Total estimated
+  engagement`. Seeded with the two packets already staged in `reports/`.
+- `scripts/cms.py`: `norm_date(v, keep_time=False)` now round-trips GMT+7
+  hour:minute precision for `Date start`/`Date end` (`Date published` stays
+  date-only); rows are grouped by `isFirstOfDate`/`dateRowSpan` so the homepage can
+  rowspan same-date rows without recomputing grouping in the template. Output moved
+  to `src/data/packets.json`.
+- Homepage: packets table replaces the old UUID/Title/DOI table; added a callout
+  linking Kolibri to Kestrel-Trending, right after the intro paragraph.
+- `.gitignore`, `README.md`: updated for the renamed generated file and the new CMS
+  schema. `cms/packets.xlsx` is now written directly by
+  `kolibri-analyze-v7.ipynb`'s `build_and_record_cms()` every run (see the sibling
+  `kolibri` repo's CHANGELOG), not hand-maintained except to fix a bad row.
+
 ## 2026-08-24 — initial scaffold
 
 - Astro static site, `base: /kolibri-reports`, `site: https://open.lokanetra.dev` —
