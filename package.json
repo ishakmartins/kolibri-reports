@@ -1,0 +1,14 @@
+{
+  "name": "kolibri-reports",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "cms": "python scripts/cms.py",
+    "dev": "npm run cms && astro dev",
+    "build": "npm run cms && astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "^5.14.1"
+  }
+}

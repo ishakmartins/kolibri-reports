@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Not found — Kolibri Reports">
+  <h1>404</h1>
+  <p class="intro">
+    No page at this address. The report may have moved, or the DOI path may be mistyped.
+    <br><a href={`${base}/`}>Back to Kolibri Reports</a>
+  </p>
+</Base>
